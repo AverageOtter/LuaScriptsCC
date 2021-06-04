@@ -44,3 +44,11 @@ function turnRight(times)
         turtle.turnRight()
     end
 end
+
+
+--Testing / Main
+moveFoward()
+turnLeft()
+turnRight(2)
+turnLeft(3)
+moveFoward(3)

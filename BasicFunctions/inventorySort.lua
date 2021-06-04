@@ -18,3 +18,6 @@ function inventorySort()
         end
     end
 end
+
+--Testing
+inventorySort()
