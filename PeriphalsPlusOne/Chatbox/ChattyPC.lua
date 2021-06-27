@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global, undefined-field
 
-chatbox = periphial.wrap("right")
+local chatbox = periphial.wrap("right")
 while true do
     local eventtype = os.pullEvent()
     if eventtype then
