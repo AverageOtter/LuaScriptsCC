@@ -10,6 +10,7 @@ function main()
             sleep(5)
             chtbx.tell("Average_Otter", "Shush RudderButt")
         elseif playername == "KazyHachi" then
+            sleep(5)
             chtbx.tell(playername, "You're Cute owoowowowowo!")
         --Messages
         elseif message == "hello" then
