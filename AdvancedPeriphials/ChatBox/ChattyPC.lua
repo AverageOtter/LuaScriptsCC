@@ -1,14 +1,14 @@
 function main()
-    chtbx = peripheral.find("chatbox")
+    chtbx = peripheral.find("chatBox")
     if chtbx == nil then error("Missing ChatBox") end
     print("Running Chatbox Script : Press Ctrl + T (hold) to terminate")
     while true do
         local event, playername, message = os.pullEvent("chat")
         --Messages
         if message == "hello" then
-            chtbx.sendMessage("Hello There " + playername + "!")
+            chtbx.sendMessage("Hello There " .. playername .. "!")
         elseif message == "uwu" or message == "owo" then
-            chtbx.sendMessage("This is a '" + message + "' free zone! 300$ fine!")
+            chtbx.sendMessage("This is a \'" .. message .. "\' free zone! 300$ fine!")
         --Players
         elseif playername == "Average_Otter" then
             sleep(4)
