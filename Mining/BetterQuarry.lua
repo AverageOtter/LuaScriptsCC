@@ -271,3 +271,5 @@ function quarry()
     print("Thank you for using Average_Otter's revised Gambit quarry program!")
     print("---------------------------------------")
 end
+
+quarry()
