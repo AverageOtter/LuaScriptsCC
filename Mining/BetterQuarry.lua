@@ -19,6 +19,10 @@ tossGarbage = io.read()
 term.clear()
 term.setCursorPos(1,1)
 
+--Add the TAGS of blocks you do not want. Find the tags of items by pressing F3 + h and looking at items in inventory
+trashTypes = {"forge:stone", "forge:dirt", "minecraft:stone", "minecraft:dirt"}
+--Add fuel you would like the turtle to use. Only solid fuel please (I.e)
+fuelTypes = {"minecraft:coal", "minecraft:charcoal", "minecraft:coal"}
 
 posX = 0
 posY = 0
@@ -98,13 +102,18 @@ function resume()
 end
 
 function checkFuel()
-    if turtle.getFuelLevel() <= 100 then
+    if turtle.getFuelLevel() <= 300 then
         local search = 0
         for search = 16, 1, -1 do
-            local item = turtle.getItemDetail(search)
-            if item and item.name == "minecraft:coal" then
-                turtle.select(search)
-                turtle.refuel(2)
+            local item = turtle.getItemDetail(search, true)
+            turtle.select(search)
+            if item then
+                local typecount = 0
+                for typeCount = #fuelTypes, 1, -1 do
+                    if item.tags[fuelTypes[typeCount]] then 
+                        turtle.refuel(2)
+                    end
+                end
             end
         end
     elseif turtle.getFuelLevel() <= posX + posY + posZ + 1 then
@@ -125,9 +134,19 @@ function empty()
         turtle.turnRight()
         while turtle.getFuelLevel() <= posX + posY + posZ + 1 do
             if turtle.suck() == true then
-                turtle.suck()
-                turtle.select(1)
-                turtle.refuel()
+                local search = 0
+                for search = 16, 1, -1 do
+                    local item = turtle.getItemDetail(search, true)
+                    turtle.select(search)
+                    if item then
+                        local typecount = 0
+                        for typeCount = #fuelTypes, 1, -1 do
+                            if item.tags[fuelTypes[typeCount]] then 
+                                turtle.refuel(2)
+                            end
+                        end
+                    end
+                end
             elseif turtle.suck() == false then
                 turtle.select(1)
                 turtle.refuel()
@@ -149,12 +168,17 @@ function checkFull()
     local search = 0
     for search = 16, 1, -1 do
         local item = turtle.getItemDetail(search, true)
-        if item and item.tags["forge:stone"] then
-            turtle.select(search)
-            turtle.drop()
-        end
         turtle.select(search)
-        if turtle.getItemCount() > 0 then
+        if item then
+            local typecount = 0
+            for typeCount = #trashTypes, 1, -1 do
+                if item.tags[trashTypes[typeCount]] then 
+                    turtle.drop() 
+            turtle.drop()
+                    turtle.drop() 
+                end
+            end
+        elseif turtle.getItemCount() > 0 then
             fullSlots = fullSlots + 1
         end
     end
