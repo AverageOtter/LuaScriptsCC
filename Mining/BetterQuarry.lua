@@ -18,6 +18,11 @@ io.write("Toss garbage blocks? yes/no ")
 tossGarbage = io.read()
 term.clear()
 term.setCursorPos(1,1)
+io.write("Is the selected area, (" .. rows .. "x" .. columns .. "), already quarried? yes/no")
+continuequarry = "no"
+continuequarry = io.read()
+term.clear()
+term.setCursorPos(1,1)
 
 --Add the TAGS of blocks you do not want. Find the tags of items by pressing F3 + h and looking at items in inventory
 trashTypes = {"forge:stone", "forge:dirt", "minecraft:stone", "minecraft:dirt"}
@@ -254,6 +259,11 @@ function quarry()
     turn = 0
     done = 0
     iniY = tonumber (iniY)
+    if continuequarry == "yes" then
+        while turtle.down() do
+            posY = posY - 1
+        end
+    end
     checkFuel()
     turtle.digUp()
     turtle.up()
