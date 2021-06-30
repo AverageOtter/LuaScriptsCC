@@ -262,7 +262,7 @@ function quarry()
     iniY = tonumber (iniY)
     if continuequarry == "yes" then
         while turtle.down() do
-            posY = posY - 1
+            posY = posY + 1
         end
     end
     checkFuel()
