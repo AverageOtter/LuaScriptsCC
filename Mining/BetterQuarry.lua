@@ -183,7 +183,8 @@ function checkFull()
                     turtle.drop() 
                 end
             end
-        elseif turtle.getItemCount() > 0 then
+        end
+        if turtle.getItemCount() > 0 then
             fullSlots = fullSlots + 1
         end
     end
