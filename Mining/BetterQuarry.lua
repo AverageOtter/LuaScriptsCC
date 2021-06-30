@@ -149,7 +149,7 @@ function checkFull()
     fullSlots = 0
     local search = 0
     for search = 16, 1, -1 do
-        local item = turtle.getItemDetail(search)
+        local item = turtle.getItemDetail(search, true)
         if item and item.tags["forge:stone"] then
             turtle.select(search)
             turtle.drop()
