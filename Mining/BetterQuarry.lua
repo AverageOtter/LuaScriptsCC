@@ -1,5 +1,4 @@
 term.clear()
-term.clear()
 term.setCursorPos(1,1)
 io.write("A revised version of Gambit's V1 Code w/o bore")
 term.clear()
