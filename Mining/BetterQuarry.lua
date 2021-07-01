@@ -27,7 +27,7 @@ term.setCursorPos(1,1)
 --Add the TAGS of blocks you do not want. Find the tags of items by pressing F3 + h and looking at items in inventory
 trashTypes = {"forge:stone", "forge:dirt", "minecraft:stone", "minecraft:dirt"}
 --Add fuel you would like the turtle to use. Only solid fuel please (I.e)
-fuelTypes = {"minecraft:coal", "minecraft:charcoal", "minecraft:coal"}
+fuelTypes = {"minecraft:coal", "minecraft:charcoal", "minecraft:coals", "forge:gems/coal"}
 
 posX = 0
 posY = 0
