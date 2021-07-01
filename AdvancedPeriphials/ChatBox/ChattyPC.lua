@@ -9,6 +9,8 @@ function main()
             chtbx.sendMessage("Hello There " .. playername .. "!")
         elseif message == "uwu" or message == "owo" then
             chtbx.sendMessage("This is a \'" .. message .. "\' free zone! 300$ fine!")
+        elseif message == "awoo" then
+            chtbx.sendMessage("'" .. message .. "s are not permitted, 500$ fine!")
         --Players
         elseif playername == "Average_Otter" then
             sleep(4)
