@@ -25,10 +25,10 @@ function main()
         local event, playername, message = os.pullEvent("chat") --Grabs data from chat event
         for setCount = largestSet, 1, -1 do
             local str = string.lower(message)
-            if str:find(greeting[setCount]) then
+            if string.find(str, greeting[setCount]) ~= nil then
                 chtbx.sendMessage("Hello There " .. playername .. "!")
                 io.write("- Hello There " .. playername .. "!")
-            elseif str:find(fines[setCount]) then
+            elseif string.find(str, fines[setCount]) ~= nil then
                 local fineAmount = math.random(500)
                 chtbx.sendMessage("This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine!")
                 io.write("- This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine!")
