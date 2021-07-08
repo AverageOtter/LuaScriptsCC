@@ -15,6 +15,25 @@ function main()
     while true do
         local event, playername, message = os.pullEvent("chat") --Grabs data from chat event
         local str = string.lower(message)
+        
+        --Commands for ingame Chat.
+        if string.find(str, "chattypc") ~= nil then
+            --ADD Command
+            if string.find(str, "add") ~= nil then
+                --Appends the set and the output file to quickly add things on the fly.
+                if string.find(str, "greeting") ~= nil and playername == "Average_Otter" then
+                    greeting[#greeting+1] =  string.sub(str, 23) --23 and on 
+                    io.write(playername .. " added \'" .. string.sub(str, 20) "\' to the greeting set at " .. os.date())
+                    chtbx.sendMessage("Done!")
+                elseif string.find(str, "fines") ~= nil and playername == "Average_Otter" then
+                    fines[#fines+1] =  string.sub(str, 20) --20 and on 
+                    io.write(playername .. " added \'" .. string.sub(str, 20) "\' to the fines set at " .. os.date())
+                    chtbx.sendMessage("Done!")
+                else
+                    chtbx.sendMessage("Error")
+                end
+            end
+        end
         for setCount = #greeting, 1, -1 do
             if string.find(str, greeting[setCount]) ~= nil then
                 chtbx.sendMessage("Hello There " .. playername .. "!")
