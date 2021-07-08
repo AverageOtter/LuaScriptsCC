@@ -22,11 +22,11 @@ function main()
                 --Appends the set and the output file to quickly add things on the fly.
                 if string.find(str, "greeting") ~= nil and playername == "Average_Otter" then
                     greeting[#greeting+1] =  string.sub(str, 23) --23 and on 
-                    file.write(playername .. " added \'" .. string.sub(str, 20) "\' to the greeting set at " .. os.date())
+                    file:write(playername .. " added \'" .. string.sub(str, 20) "\' to the greeting set at " .. os.date())
                     chtbx.sendMessage("Done!")
                 elseif string.find(str, "fines") ~= nil and playername == "Average_Otter" then
                     fines[#fines+1] =  string.sub(str, 20) --20 and on 
-                    file.write(playername .. " added \'" .. string.sub(str, 20) "\' to the fines set at " .. os.date())
+                    file:write(playername .. " added \'" .. string.sub(str, 20) "\' to the fines set at " .. os.date())
                     chtbx.sendMessage("Done!")
                 else
                     chtbx.sendMessage("Error")
@@ -36,7 +36,7 @@ function main()
         for setCount = #greeting, 1, -1 do
             if string.find(str, greeting[setCount]) ~= nil then
                 chtbx.sendMessage("Hello There " .. playername .. "!")
-                file.write(os.date() .. " - Hello There " .. playername .. "! : " .. playername .. "\n")
+                file:write(os.date() .. " - Hello There " .. playername .. "! : " .. playername .. "\n")
                 sleep(2)
             end
         end
@@ -44,7 +44,7 @@ function main()
             if string.find(str, fines[setCount]) ~= nil then
                 local fineAmount = math.random(100, 500)
                 chtbx.sendMessage("This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine!")
-                file.write(os.date() .. " - This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine! : " .. playername .."\n")
+                file:write(os.date() .. " - This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine! : " .. playername .."\n")
                 sleep(2)
             end
         end
