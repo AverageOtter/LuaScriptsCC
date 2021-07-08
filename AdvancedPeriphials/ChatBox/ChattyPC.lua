@@ -22,11 +22,11 @@ function main()
                 --Appends the set and the output file to quickly add things on the fly.
                 if (string.find(str, "greeting") ~= nil) and (playername == "Average_Otter") then
                     greeting[#greeting+1] =  string.sub(str, 23) --23 and on 
-                    file:write(playername .. " added \'" .. string.sub(str, 20) "\' to the greeting set at " .. os.date())
+                    file:write(playername .. " added \'" .. string.sub(str, 20) .. "\' to the greeting set at " .. os.date())
                     chtbx.sendMessage("Done!")
                 elseif (string.find(str, "fines") ~= nil) and (playername == "Average_Otter") then
                     fines[#fines+1] =  string.sub(str, 20) --20 and on 
-                    file:write(playername .. " added \'" .. string.sub(str, 20) "\' to the fines set at " .. os.date())
+                    file:write(playername .. " added \'" .. string.sub(str, 20) .. "\' to the fines set at " .. os.date())
                     chtbx.sendMessage("Done!")
                 else
                     chtbx.sendMessage("Error")
