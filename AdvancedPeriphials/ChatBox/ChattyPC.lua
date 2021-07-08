@@ -38,6 +38,7 @@ function main()
                 chtbx.sendMessage("Hello There " .. playername .. "!")
                 file:write(os.date() .. " - Hello There " .. playername .. "! : " .. playername .. "\n")
                 sleep(2)
+                message = "" --To avoid Double sends like "hello owo"
             end
         end
         for setCount = #fines, 1, -1 do
@@ -46,6 +47,7 @@ function main()
                 chtbx.sendMessage("This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine!")
                 file:write(os.date() .. " - This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine! : " .. playername .."\n")
                 sleep(2)
+                message = "" --To avoid Double sends like "hello owo"
             end
         end
     end
