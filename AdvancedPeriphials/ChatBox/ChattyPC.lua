@@ -1,25 +1,36 @@
-function main()
-    chtbx = peripheral.find("chatBox")
-    if chtbx == nil then error("Missing ChatBox") end
-    print("Running Chatbox Script : Press Ctrl + T (hold) to terminate")
-    while true do
-        local event, playername, message = os.pullEvent("chat")
-        --Messages
-        if message == "hello" then
-            chtbx.sendMessage("Hello There " .. playername .. "!")
-        elseif message == "uwu" or message == "owo" then
-            chtbx.sendMessage("This is a \'" .. message .. "\' free zone! 300$ fine!")
-        elseif message == "awoo" then
-            chtbx.sendMessage("'" .. message .. "s are not permitted, 500$ fine!")
-        --Players
-        elseif playername == "Average_Otter" then
-            sleep(4)
-            chtbx.sendMessageToPlayer("Shush RudderButt.", playername)
-        elseif playername == "KazyHachi" then
-            sleep(4)
-            chtbx.sendMessageToPlayer("You're Cute owoowowowowo!", playername)
-        end
 
+local greeting = {"hello", "hey", "o/", "ello", "howdy", "hello there"}
+local fines = {"uwu", "owo", "awoo", "o3o", "ono"}
+
+function findLargestTable()
+    local max = -1
+    if #greeting > #fines then 
+        max = #greeting
+    else
+        max = #fines
+    end
+    return max
+end
+
+function main()
+    chtbx = peripheral.find("chatBox") --Wraps connected chatbox
+    if chtbx == nil then error("Missing ChatBox") end --Errors if chatbox isnt connected.
+    shell.clear()
+    print("Running Chatbox Script : Press Ctrl + T (hold) to terminate") --Prints to let user know what script is Running
+    local SetCount = 0
+    local largestSet = findLargestTable()
+    if largestSet == -1 then error("Invalid table length") end
+    while true do
+        local event, playername, message = os.pullEvent("chat") --Grabs data from chat event
+        for setCount = largestSet, 1, -1 do
+            str = message.lower()
+            if str:find(greeting[setCount]) then
+                chtbx.sendMessage("Hello There " .. playername .. "!")
+            elseif str:find(fines[setCount]) then
+                local fineAmount = math.random(500)
+                chtbx.sendMessage("This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine!")
+            end
+        end
     end
 end
 main()
