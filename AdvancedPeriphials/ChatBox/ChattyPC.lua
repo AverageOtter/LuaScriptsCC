@@ -15,8 +15,9 @@ end
 function main()
     chtbx = peripheral.find("chatBox") --Wraps connected chatbox
     if chtbx == nil then error("Missing ChatBox") end --Errors if chatbox isnt connected.
-    shell.clear()
-    print("Running Chatbox Script : Press Ctrl + T (hold) to terminate") --Prints to let user know what script is Running
+    io.flush()
+    io.write("Running Chatbox Script : Press Ctrl + T (hold) to terminate") --Prints to let user know what script is Running
+    io.write("----------------------------------------------------")
     local SetCount = 0
     local largestSet = findLargestTable()
     if largestSet == -1 then error("Invalid table length") end
@@ -26,9 +27,11 @@ function main()
             str = message.lower()
             if str:find(greeting[setCount]) then
                 chtbx.sendMessage("Hello There " .. playername .. "!")
+                io.write("- Hello There " .. playername .. "!")
             elseif str:find(fines[setCount]) then
                 local fineAmount = math.random(500)
                 chtbx.sendMessage("This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine!")
+                io.write("- This is a \'" .. fines[setCount] .. "\' free zone! ".. fineAmount.."$ fine!")
             end
         end
     end
