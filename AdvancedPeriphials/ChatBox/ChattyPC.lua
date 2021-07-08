@@ -24,7 +24,7 @@ function main()
     while true do
         local event, playername, message = os.pullEvent("chat") --Grabs data from chat event
         for setCount = largestSet, 1, -1 do
-            str = message.lower()
+            local str = string.lower(message)
             if str:find(greeting[setCount]) then
                 chtbx.sendMessage("Hello There " .. playername .. "!")
                 io.write("- Hello There " .. playername .. "!")
